@@ -86,11 +86,11 @@ public class TextFileMappingProvider implements MappingProvider {
     }
 
     private void setAlphabetString(String alphabetString){
-        this.alphabetString = alphabetString;
+        this.alphabetString = alphabetString.toLowerCase();
     }
 
     private void setSubstituteAlphabetString(String substituteAlphabetString){
-        this.substituteAlphabetString = substituteAlphabetString;
+        this.substituteAlphabetString = substituteAlphabetString.toLowerCase();
     }
 
     private void setDecryptedCharacterMap(){
