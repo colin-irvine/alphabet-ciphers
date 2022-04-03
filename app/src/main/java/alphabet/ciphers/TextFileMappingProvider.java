@@ -64,11 +64,11 @@ public class TextFileMappingProvider implements MappingProvider {
         firstSet = new HashSet<>();
         secondSet = new HashSet<>();
 
-        for( char character: alphabet.toCharArray()){
+        for( char character: alphabet.toLowerCase().toCharArray()){
             firstSet.add( character );
         }
 
-        for( char character: substituteAlphabet.toCharArray()){
+        for( char character: substituteAlphabet.toLowerCase().toCharArray()){
             secondSet.add( character );
         }
 
