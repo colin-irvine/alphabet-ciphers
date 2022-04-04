@@ -9,6 +9,15 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/*
+ * This class is responsible for reading a substitution cipher
+ * by reading the first two lines from a file and using them as
+ * the substitution letters based in position/index on the lines.
+ * For example, if the two lines were 'abcdef' and 'gabxst' would
+ * mean the letter 'a' swaps with the letter 'g' as they are both
+ * in the first position, 'b' swaps wth 'a' and so on.
+ */
+
 public class TextFileMappingProvider implements MappingProvider {
     private String alphabetString;
     private String substituteAlphabetString;
