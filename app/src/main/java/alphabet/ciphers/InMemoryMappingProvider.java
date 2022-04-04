@@ -26,7 +26,7 @@ public class InMemoryMappingProvider implements MappingProvider{
         String alphabetStr = "abcdefghijklmnopqrstuvwxyz";
         String alBhedAlphabetStr = "ypltavkrezgmshubxncdijfqow";
 
-        for(int i = 0; i < 26; ++i){
+        for ( int i = 0; i < 26; ++i ) {
             this.encryptedCharacterMap.put(alBhedAlphabetStr.charAt(i),
                     alphabetStr.charAt(i));
             this.encryptedCharacterMap.put(alBhedAlphabetStr.toUpperCase().charAt(i),
@@ -38,7 +38,7 @@ public class InMemoryMappingProvider implements MappingProvider{
         String alphabetStr = "abcdefghijklmnopqrstuvwxyz";
         String alBhedAlphabetStr = "ypltavkrezgmshubxncdijfqow";
 
-        for(int i = 0; i < 26; ++i){
+        for ( int i = 0; i < 26; ++i ) {
             this.encryptedCharacterMap.put(alphabetStr.charAt(i),
                     alBhedAlphabetStr.charAt(i));
             this.encryptedCharacterMap.put(alphabetStr.toUpperCase().charAt(i),

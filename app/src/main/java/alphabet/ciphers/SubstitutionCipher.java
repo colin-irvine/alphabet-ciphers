@@ -20,14 +20,14 @@ public class SubstitutionCipher implements AlphabetCipher {
     }
 
     private void checkAlphabeticalCharacters(String text){
-        if(hasNoAlphabeticalCharacters( text )){
+        if ( hasNoAlphabeticalCharacters( text ) ) {
             throw new IllegalArgumentException("No characters to cipher");
         }
     }
 
     private boolean hasNoAlphabeticalCharacters(String plainText){
-        for(char ch: plainText.toCharArray()){
-            if(isAlphabetChar(ch)){
+        for ( char ch: plainText.toCharArray() ) {
+            if ( isAlphabetChar(ch) ) {
                 return false;
             }
         }
@@ -41,8 +41,8 @@ public class SubstitutionCipher implements AlphabetCipher {
     private String cipherString(String text, boolean decipher){
         String cipherString = "";
 
-        for( char character: text.toCharArray()){
-            if(isAlphabetChar( character )){
+        for ( char character: text.toCharArray() ) {
+            if ( isAlphabetChar( character ) ) {
                 cipherString += cipherChar( character , decipher);
                 continue;
             }
@@ -53,7 +53,7 @@ public class SubstitutionCipher implements AlphabetCipher {
     }
 
     private Character cipherChar(Character character, boolean decipher){
-        if(decipher){
+        if ( decipher ) {
             return this.mapping.getDecryptedCharacter( character );
         }
         return this.mapping.getEncryptedCharacter( character );

@@ -9,7 +9,6 @@ public class ArithmeticCaesar implements AlphabetCipher {
 
     @Override
     public String encrypt(String plainText) {
-
         checkAlphabeticalCharacters( plainText );
 
         return cipherString( plainText, false );
@@ -17,7 +16,6 @@ public class ArithmeticCaesar implements AlphabetCipher {
 
     @Override
     public String decrypt(String cipherText) {
-
         checkAlphabeticalCharacters( cipherText );
 
         return cipherString( cipherText, true);
@@ -28,14 +26,14 @@ public class ArithmeticCaesar implements AlphabetCipher {
     }
 
     private void checkAlphabeticalCharacters(String text){
-        if(hasNoAlphabeticalCharacters( text )){
+        if ( hasNoAlphabeticalCharacters( text ) ) {
             throw new IllegalArgumentException("No characters to cipher");
         }
     }
 
     private boolean hasNoAlphabeticalCharacters(String plainText){
-        for(char ch: plainText.toCharArray()){
-            if(isAlphabetChar(ch)){
+        for ( char ch: plainText.toCharArray() ) {
+            if ( isAlphabetChar(ch) ) {
                 return false;
             }
         }
@@ -48,8 +46,8 @@ public class ArithmeticCaesar implements AlphabetCipher {
 
         shiftValue = Decipher ? - this.shiftValue : this.shiftValue;
 
-        for( char character: text.toCharArray() ){
-            if(isAlphabetChar( character )){
+        for ( char character: text.toCharArray() ){
+            if (isAlphabetChar( character )) {
                 cipherText += cipherChar( character, shiftValue );
                 continue;
             }
@@ -68,7 +66,7 @@ public class ArithmeticCaesar implements AlphabetCipher {
         boolean upperFlag = Character.isUpperCase(character);
         int charIndex;
 
-        if(upperFlag){
+        if ( upperFlag ) {
             charIndex = alphabetStr.toUpperCase().indexOf( character );
             return alphabetStr.toUpperCase().charAt( wrapIndexToAlphabet( charIndex + shiftValue ) );
         }
@@ -79,7 +77,7 @@ public class ArithmeticCaesar implements AlphabetCipher {
     }
 
     private int wrapIndexToAlphabet(int n){
-        if( n < 0 ) {
+        if ( n < 0 ) {
             return 26 - Math.abs( n % 26 );
         }
         return Math.abs( n % 26 );
