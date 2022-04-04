@@ -42,8 +42,7 @@ public class TestCaesarCipher {
 
     @Test
     public void testEncryptWhenShiftedBy1ExpectSuccess(){
-        ArithmeticCaesar arithmeticCaesar = new ArithmeticCaesar();
-        arithmeticCaesar.setShiftValue(1);
+        ArithmeticCaesar arithmeticCaesar = new ArithmeticCaesar(1);
 
         AlphabetCipher cipher = arithmeticCaesar;
 
@@ -62,8 +61,7 @@ public class TestCaesarCipher {
 
     @Test
     public void testDecryptWhenShiftedBy1AlphabeticalAndNonAlphabeticalCharactersExpectSuccess(){
-        ArithmeticCaesar arithmeticCaesar = new ArithmeticCaesar();
-        arithmeticCaesar.setShiftValue(1);
+        ArithmeticCaesar arithmeticCaesar = new ArithmeticCaesar(1);
 
         AlphabetCipher cipher = arithmeticCaesar;
 

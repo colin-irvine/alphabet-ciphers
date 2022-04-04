@@ -22,11 +22,19 @@ public class TextFileMappingProvider implements MappingProvider {
     }
 
     @Override
+    /*
+     * @param character - character to map to encrypted value
+     * @return character's encrypted value
+     */
     public Character getEncryptedCharacter(Character character) {
         return this.encryptedCharacterMap.get( character );
     }
 
     @Override
+    /*
+     * @param character - character to map to decrypted value
+     * @return character's decrypted value
+     */
     public Character getDecryptedCharacter(Character character) {
         return this.decryptedCharacterMap.get( character );
     }
@@ -42,13 +50,14 @@ public class TextFileMappingProvider implements MappingProvider {
         checkLineIsValid( firstLine );
         checkLineIsValid( secondLine );
         checkMappingIsValid( firstLine, secondLine );
+
         setAlphabetString( firstLine );
         setSubstituteAlphabetString( secondLine );
     }
 
     private void checkLineIsValid(String line) throws IllegalArgumentException {
-        if( line == null ||
-            line.isBlank() ){
+        if ( line == null
+                || line.isBlank() ) {
             throw new IllegalArgumentException("Mapping data is missing from file");
         }
     }
@@ -60,14 +69,15 @@ public class TextFileMappingProvider implements MappingProvider {
     }
 
     private void checkAlphabetsStringsAreDifferent(String alphabet, String substituteAlphabet) throws IllegalArgumentException {
-        if( alphabet.equals( substituteAlphabet )){
+        if ( alphabet.equals( substituteAlphabet ) ) {
             throw new IllegalArgumentException("Mappings are the same, not possible to cipher");
         }
     }
 
     private void checkLengthsAreEqual(String alphabet, String substituteAlphabet) throws IllegalArgumentException {
-        if( alphabet.length() != substituteAlphabet.length() )
+        if ( alphabet.length() != substituteAlphabet.length() ) {
             throw new IllegalArgumentException("Substitution mappings are of different lengths");
+        }
     }
 
     private void checkAlphabetSetsAreEqual(String alphabet, String substituteAlphabet) throws IllegalArgumentException {
@@ -75,23 +85,23 @@ public class TextFileMappingProvider implements MappingProvider {
         firstSet = new HashSet<>();
         secondSet = new HashSet<>();
 
-        for( char character: alphabet.toLowerCase().toCharArray()){
+        for ( char character: alphabet.toLowerCase().toCharArray() ) {
             firstSet.add( character );
         }
 
-        for( char character: substituteAlphabet.toLowerCase().toCharArray()){
+        for ( char character: substituteAlphabet.toLowerCase().toCharArray() ) {
             secondSet.add( character );
         }
 
-        if( firstSet.stream().count() != alphabet.length() ){
+        if ( firstSet.stream().count() != alphabet.length() ) {
             throw new IllegalArgumentException("Substitution mapping is not distinct: first line");
         }
 
-        if( secondSet.stream().count() != substituteAlphabet.length() ){
+        if ( secondSet.stream().count() != substituteAlphabet.length() ) {
             throw new IllegalArgumentException("Substitution mapping is not distinct: second line");
         }
 
-        if( !firstSet.equals(secondSet) ){
+        if ( !firstSet.equals(secondSet) ) {
             throw new IllegalArgumentException("Substitution mappings contain different characters");
         }
     }
@@ -107,18 +117,18 @@ public class TextFileMappingProvider implements MappingProvider {
     private void setDecryptedCharacterMap(){
         int substitutionLength = this.alphabetString.length();
 
-        for(int i = 0; i < substitutionLength; ++i){
-            this.encryptedCharacterMap.put(this.substituteAlphabetString.charAt(i),
-                    this.alphabetString.charAt(i));
-            this.encryptedCharacterMap.put(this.substituteAlphabetString.toUpperCase().charAt(i),
-                    this.alphabetString.toUpperCase().charAt(i));
+        for ( int i = 0; i < substitutionLength; ++i ) {
+            this.encryptedCharacterMap.put( this.substituteAlphabetString.charAt(i),
+                    this.alphabetString.charAt(i) );
+            this.encryptedCharacterMap.put( this.substituteAlphabetString.toUpperCase().charAt(i),
+                    this.alphabetString.toUpperCase().charAt(i) );
         }
     }
 
     private void setEncryptedCharacterMap(){
         int substitutionLength = this.alphabetString.length();
 
-        for(int i = 0; i < substitutionLength; ++i){
+        for ( int i = 0; i < substitutionLength; ++i ) {
             this.encryptedCharacterMap.put( this.alphabetString.charAt(i),
                     this.substituteAlphabetString.charAt(i) );
             this.encryptedCharacterMap.put( this.alphabetString.toUpperCase().charAt(i),
