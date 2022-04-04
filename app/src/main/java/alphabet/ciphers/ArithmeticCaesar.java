@@ -4,7 +4,7 @@ public class ArithmeticCaesar implements AlphabetCipher {
     private int shiftValue;
 
     ArithmeticCaesar(){
-        this.shiftValue = 3;
+        setShiftValue( 3 );
     }
 
     @Override
@@ -26,6 +26,7 @@ public class ArithmeticCaesar implements AlphabetCipher {
     public void setShiftValue(int shiftValue){
         this.shiftValue = shiftValue;
     }
+
     private void checkAlphabeticalCharacters(String text){
         if(hasNoAlphabeticalCharacters( text )){
             throw new IllegalArgumentException("No characters to cipher");
