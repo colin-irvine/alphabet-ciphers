@@ -1,5 +1,18 @@
 package alphabet.ciphers;
 
+/*
+ * This class is responsible for performing substitution cipher
+ * operations on text passed to its encrypt and decrypt methods.
+ * Every letter has (or at least should) another letter assigned to
+ * use as a substitute. For example, if the letters T, H an E have
+ * the substitutes D,R and A respectively then the word 'The' gets
+ * encrypted to the word 'Dra'.
+ *
+ * On construction/initialisation, a mapping provider is passed
+ * to be used to swap/substitute characters for the encryption
+ * and decryption.
+ */
+
 public class SubstitutionCipher implements AlphabetCipher {
     private final MappingProvider mapping;
 
@@ -8,6 +21,11 @@ public class SubstitutionCipher implements AlphabetCipher {
     }
 
     @Override
+    /* Ciphers the text passed using a substitution cipher
+     *
+     * @param plainText - Text to ciphered
+     * @return cipher text made by ciphering the plainText parameter
+     */
     public String encrypt(String plainText) {
         checkAlphabeticalCharacters( plainText );
 
@@ -15,6 +33,11 @@ public class SubstitutionCipher implements AlphabetCipher {
     }
 
     @Override
+    /* Deciphers the text passed using a substitution cipher
+     *
+     * @param plainText - Text to ciphered
+     * @return cipher text made by ciphering the plainText parameter
+     */
     public String decrypt(String cipherText) {
         return cipherString( cipherText, true);
     }

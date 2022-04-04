@@ -3,6 +3,10 @@ package alphabet.ciphers;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * This class is useful as a test double for development reasons
+ */
+
 public class InMemoryMappingProvider implements MappingProvider{
     private Map<Character, Character> decryptedCharacterMap = new HashMap<>();
     private Map<Character, Character> encryptedCharacterMap = new HashMap<>();
@@ -13,11 +17,19 @@ public class InMemoryMappingProvider implements MappingProvider{
     }
 
     @Override
+    /*
+     * @param character - character to map to encrypted value
+     * @return character's encrypted value
+     */
     public Character getEncryptedCharacter(Character character) {
         return this.encryptedCharacterMap.get( character );
     }
 
     @Override
+    /*
+     * @param character - character to map to decrypted value
+     * @return character's decrypted value
+     */
     public Character getDecryptedCharacter(Character character) {
         return this.decryptedCharacterMap.get( character );
     }

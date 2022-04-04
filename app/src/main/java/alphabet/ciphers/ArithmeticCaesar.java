@@ -1,13 +1,40 @@
 package alphabet.ciphers;
 
+/*
+ * This class is responsible for performing Caesar or Shift cipher
+ * operations on text passed to its encrypt and decrypt methods.
+ * A shift value is used to move the characters forwards or backwards
+ * through the alphabet. For example, with a shift value of 3 the
+ * string 'abc' encrypted becomes 'def'. With a shift value of 3 the
+ * string 'abc' decrypted becomes 'xyz'.
+ */
+
 public class ArithmeticCaesar implements AlphabetCipher {
     private int shiftValue;
 
-    ArithmeticCaesar(){
+    /*
+     * If cipher 'shift' value not provided
+     *      default the value to 3
+     */
+    public ArithmeticCaesar(){
         setShiftValue( 3 );
     }
 
+    /*
+     * Set 'shift' value provided
+     * @param shiftValue - integer value to be used as 'shift' to cipher and decipher
+     */
+    public ArithmeticCaesar(int shiftValue){
+        setShiftValue( shiftValue );
+    }
+
     @Override
+    /* Ciphers the text passed using a basic Caesar cipher by moving
+     * the letters in the alphabet
+     *
+     * @param plainText - Text to ciphered
+     * @return cipher text made by ciphering the plainText parameter
+     */
     public String encrypt(String plainText) {
         checkAlphabeticalCharacters( plainText );
 
@@ -15,13 +42,19 @@ public class ArithmeticCaesar implements AlphabetCipher {
     }
 
     @Override
+    /* Deciphers the text passed using a basic Caesar cipher by moving
+     * the letters the opposite direction in the alphabet
+     *
+     * @param cipherText - Text to be deciphered
+     * @return plain text made by deciphering the cipherText parameter
+     */
     public String decrypt(String cipherText) {
         checkAlphabeticalCharacters( cipherText );
 
         return cipherString( cipherText, true);
     }
 
-    public void setShiftValue(int shiftValue){
+    private void setShiftValue(int shiftValue){
         this.shiftValue = shiftValue;
     }
 

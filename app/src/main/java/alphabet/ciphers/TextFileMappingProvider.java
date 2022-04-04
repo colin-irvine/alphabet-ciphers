@@ -22,11 +22,19 @@ public class TextFileMappingProvider implements MappingProvider {
     }
 
     @Override
+    /*
+     * @param character - character to map to encrypted value
+     * @return character's encrypted value
+     */
     public Character getEncryptedCharacter(Character character) {
         return this.encryptedCharacterMap.get( character );
     }
 
     @Override
+    /*
+     * @param character - character to map to decrypted value
+     * @return character's decrypted value
+     */
     public Character getDecryptedCharacter(Character character) {
         return this.decryptedCharacterMap.get( character );
     }
