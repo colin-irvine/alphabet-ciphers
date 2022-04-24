@@ -3,3 +3,9 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignore npm modules
+node_modules
+
+# Ignore IntelliJ cache
+.idea
