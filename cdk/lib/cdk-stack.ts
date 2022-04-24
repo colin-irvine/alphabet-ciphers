@@ -2,8 +2,8 @@ import { LambdaIntegration, MethodLoggingLevel, RestApi } from "aws-cdk-lib/aws-
 import { PolicyStatement } from "aws-cdk-lib/aws-iam"
 import { Function, Runtime, Code } from "aws-cdk-lib/aws-lambda"
 import { Stack, StackProps } from "aws-cdk-lib"
-import { CfnOutput } from "@aws-cdk/core";
 import { Construct } from 'constructs';
+import { CfnOutput } from "aws-cdk-lib";
 
 export class CdkStack extends Stack {
 
@@ -18,13 +18,14 @@ export class CdkStack extends Stack {
 
     this.lambdaFunction = new Function(this, this.stackName + '-lambda', {
         runtime: Runtime.JAVA_8,
-        code: Code.fromAsset('./app/build/libs/app.jar'),
-        handler: 'TBD',
+        code: Code.fromAsset('../app/build/distributions/app.zip'),
+        handler: 'alphabet.ciphers.LambdaHandler',
         });
     
      this.lambdaFunctionIntegration = new LambdaIntegration(this.lambdaFunction);
      const lambdaResource = this.restApi.root.addResource(this.stackName + '-lambda');
      lambdaResource.addMethod('GET', this.lambdaFunctionIntegration);
+     new CfnOutput(this, "Endpoint", { value: `http://localhost:4566/restapis/${this.restApi.restApiId}/prod/_user_request_${lambdaResource.path}` });
      
   }
 }
