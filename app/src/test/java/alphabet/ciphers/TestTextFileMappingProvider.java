@@ -46,4 +46,9 @@ public class TestTextFileMappingProvider {
         TextFileMappingProvider mappingProvider = new TextFileMappingProvider("C:/Users/colin/alphabet-ciphers/app/src/test/resources/blank-first-line-good-second-line");
     }
 
+    @Test
+    public void testTextFileMappingProviderWhenMappingFileIsGoodExpectSuccess() throws Exception {
+        TextFileMappingProvider mappingProvider = new TextFileMappingProvider("C:/Users/colin/alphabet-ciphers/app/src/test/resources/substitution-cipher.txt");
+    }
+
 }
