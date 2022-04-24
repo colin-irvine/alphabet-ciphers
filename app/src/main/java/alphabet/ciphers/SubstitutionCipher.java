@@ -21,7 +21,7 @@ public class SubstitutionCipher implements AlphabetCipher {
     }
 
     @Override
-    /* Ciphers the text passed using a substitution cipher
+    /** Ciphers the text passed using a substitution cipher
      *
      * @param plainText - Text to ciphered
      * @return cipher text made by ciphering the plainText parameter
@@ -33,7 +33,7 @@ public class SubstitutionCipher implements AlphabetCipher {
     }
 
     @Override
-    /* Deciphers the text passed using a substitution cipher
+    /** Deciphers the text passed using a substitution cipher
      *
      * @param plainText - Text to ciphered
      * @return cipher text made by ciphering the plainText parameter

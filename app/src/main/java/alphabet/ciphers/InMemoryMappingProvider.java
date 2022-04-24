@@ -26,7 +26,7 @@ public class InMemoryMappingProvider implements MappingProvider{
     }
 
     @Override
-    /*
+    /**
      * @param character - character to map to decrypted value
      * @return character's decrypted value
      */

@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/*
+/**
  * This class is responsible for reading a substitution cipher
  * by reading the first two lines from a file and using them as
  * the substitution letters based in position/index on the lines.
@@ -31,7 +31,7 @@ public class TextFileMappingProvider implements MappingProvider {
     }
 
     @Override
-    /*
+    /**
      * @param character - character to map to encrypted value
      * @return character's encrypted value
      */
@@ -40,7 +40,7 @@ public class TextFileMappingProvider implements MappingProvider {
     }
 
     @Override
-    /*
+    /**
      * @param character - character to map to decrypted value
      * @return character's decrypted value
      */
